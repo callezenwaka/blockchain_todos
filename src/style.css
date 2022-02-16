@@ -1,0 +1,35 @@
+.row > main,
+main {
+  margin-top: 60px;
+}
+
+#content {
+  display: none;
+}
+
+form {
+  width: 350px;
+  margin-bottom: 10px;
+}
+
+ul {
+  margin-bottom: 0px;
+}
+
+#completedTaskList .content {
+  color: grey;
+  text-decoration: line-through;
+}
+@media only screen and (min-width: 576px) {
+  /* @media (min-width: 576px) { */
+  .d-sm-none {
+    display: none !important;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  /* @media (min-width: 576px) { */
+  .d-sm-block {
+    display: block !important;
+  }
+}
