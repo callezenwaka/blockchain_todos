@@ -37,10 +37,16 @@ App = {
       try {
         // Request account access if needed
         // await ethereum.enable()
-        // await window.ethereum.request({method: `eth_requestAccounts`});
+        await window.ethereum.request({method: `eth_requestAccounts`});
         // await ethereum.request({ method: 'eth_accounts' });
         // Acccounts now exposed
-        web3.eth.sendTransaction({/* ... */})
+        web3.eth.sendTransaction({/* ... */});
+        // web3.eth.sendTransaction({
+        //   from: web3.eth.accounts[0],
+        //   to: "0x943",
+        //   value: "1000000000000000000",
+        //   data: "0xdf"
+        // })
       } catch (error) {
         // User denied account access...
       }
@@ -123,7 +129,7 @@ App = {
       $newTaskTemplate.find('input')
                       .prop('name', taskId)
                       .prop('checked', taskCompleted)
-                      // .on('click', App.toggleCompleted)
+                      .on('click', App.toggleCompleted)
 
       // Put the task in the correct list
       if (taskCompleted) {
@@ -135,6 +141,22 @@ App = {
       // Show the task
       $newTaskTemplate.show()
     }
+  },
+
+  createTask: async () => {
+    App.setLoading(true);
+    const content = $('#newTask').val();
+    // await App.todoList.createTask(content);
+    // await App.todoList.createTask(content, { from: web3.eth.defaultAccount });
+    await App.todoList.createTask(content, { from: App.account });
+    window.location.reload();
+  },
+
+  toggleCompleted: async (e) => {
+    App.setLoading(true);
+    const taskId = e.target.name;
+    await App.todoList.toggleCompleted(taskId, { from: App.account });
+    window.location.reload();
   },
 
   setLoading: (boolean) => {
