@@ -1,3 +1,28 @@
+### Compile smart contract
+```
+truffle compile
+```
+
+### migrate smart contract
+```
+truffle migrate --reset
+```
+
+### explore smart contract
+```
+truffle console
+```
+
+### test smart contract
+```
+truffle test
+```
+
+### start smart contract in dev env
+```
+npm run dev
+```
+
 function mainEnter() {
   web3.eth.getAccounts(function (error, result) {
     web3.eth.sendTransaction({
